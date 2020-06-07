@@ -1,0 +1,18 @@
+.bgDisenart {
+    background-color: #B60E0E;
+    color: white;
+}
+
+.btnDisenart,
+table th {
+    font-family: 'GilroyBold', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.card-header,
+table td {
+    font-family: 'Gilroy', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+td i.fa {
+    cursor: pointer;
+}

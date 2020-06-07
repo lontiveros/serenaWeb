@@ -1,0 +1,34 @@
+<div class="modal-header bgDisenart">
+    <h5 class="modal-title">{{ modalTitle }}</h5>
+    <button type="button" class="close" aria-hidden="true" (click)="cerrarModal()">×</button>
+</div>
+<div class="modal-body">
+    <app-galeria-grid [proyectoNombre]="proyecto.obraData.nombre"></app-galeria-grid>
+    <div class="row">
+        <div class="col-12">
+            <div class="dropzone" appDropZone
+                (hovered)="toggleHover($event)"
+                (dropped)="onDrop($event)"
+                [class.isHovering]="isHovering"
+            >
+            <h3>Arrastre acá los archivos que desee agregar al proyecto</h3>
+            <div class="file">
+                <label for="fileUpload" class="file-label">
+                    <input type="file" name="fileUpload" id="fileUpload" class="file-input" (change)="onDrop($event.target.files)">
+                </label>
+            </div>
+        </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-4" *ngFor="let file of files">
+            <app-galeria-upload-task 
+                [file]="file" 
+                [proyectoNombre]="proyecto.obraData.nombre"
+                (imageUploaded)="actualizarGaleria()"></app-galeria-upload-task>
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-secondary" (click)="cerrarModal()">Cerrar</button>
+</div>

@@ -1,0 +1,42 @@
+<app-bo-header [breadcrumbs]="breadcrumbs"></app-bo-header>
+
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-12">
+			<div class="card">
+				<div class="card-header d-flex justify-content-between">
+					<span>Listado de materiales</span>
+					<!--<button class="btn btn-sm bgDisenart btnDisenart" (click)="abrirProyectoModal()">
+						Agregar
+					</button>-->
+				</div>
+				<div class="card-body">
+					<table class="table table-bordered table-sm table-striped w-100">
+						<thead class="bgDisenart text-center">
+							<tr>
+								<th>Categoria</th>
+								<th>Nombre</th>
+								<th>Marca</th>
+								<th>Precio unitario</th>
+								<th>Ficha tecnica</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr *ngFor="let material of materiales">
+                                <td>{{ material.id }}</td>
+                                <td>{{ material.nombre }}</td>
+                                <td>{{ material.matData.Marca}}</td>
+                                <td>{{ material.matData.Precio | currency : 'USD' : 'symbol' : '1.2-2' : 'es-Ar' }}</td>
+                                <td> <a href="{{ material.matData.Ficha }}" target="_blank">Ver ficha tecnica</a></td>
+                                <td class="text-center">
+									<i class="fa fa-pencil mr-3" title="Editar" (click)="abrirModalMateriales(material)"></i>
+									<i class="fa fa-trash" title="Eliminar" (click)="eliminarMaterial(material)"></i>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>	
+</div>

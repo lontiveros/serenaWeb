@@ -1,0 +1,19 @@
+@import '~bootstrap/dist/css/bootstrap.css';
+
+:root {
+    --disenart-red-color: #B60E0E;
+	--disenart-red-light-color: #D82020;
+	--disenart-red-lighter-color: #F72F2F;
+	--disenart-black-color: #262626;
+	--disenart-white-color: #FFFFFF;
+}
+
+.sidebarNav.ng-sidebar--opened.ng-sidebar--push {
+    box-shadow: 0 0 .5em rgba(182,14,14,0.5);
+}
+
+.sidebarNav {
+	width: 250px;
+	background-color: white;
+	font-family: 'Gilroy', Tahoma, Geneva, Verdana, sans-serif;
+}

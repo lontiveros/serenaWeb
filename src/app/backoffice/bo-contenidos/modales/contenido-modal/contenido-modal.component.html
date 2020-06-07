@@ -1,0 +1,37 @@
+<div class="modal-header bgDisenart">
+    <h5 class="modal-title">{{ modalTitle }}</h5>
+    <button type="button" class="close" aria-hidden="true" (click)="cerrarModal()">×</button>
+</div>
+
+<div class="modal-body">
+    <form [formGroup]="contenidoForm">
+        <fieldset>
+
+            <legend>Contenido</legend>
+            <div class="row">
+                <div class="col-12">
+                    <div class="form-group">
+                        <label for="nombre">Titulo</label>
+                        <input type="text" name="titulo" id="titulo" class="form-control" formControlName="titulo">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-3">
+                    <div class="form-group">
+                        <div class="d-flex justify-content-between">
+                            <label for="texto">Texto</label>
+                        </div>
+                        <textarea name="texto" id="texto" class="form-control" formControlName="texto">
+                        </textarea>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+</div>
+
+<div class="modal-footer">
+    <button class="btn btn-sm btn-secondary mr-2" (click)="cerrarModal()">Cerrar</button>
+    <button class="btn btn-sm btn-success" (click)="guardarContenido()">Guardar</button>
+</div>

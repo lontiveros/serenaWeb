@@ -1,0 +1,18 @@
+.close {
+    cursor: pointer;
+    color: white;
+}
+
+.bgDisenart {
+    background-color: #B60E0E;
+    color: white;
+}
+
+.modal-footer .btn,
+.modal-header {
+    font-family: 'GilroyBold';
+}
+
+.modal-body {
+    font-family: 'Gilroy';
+}

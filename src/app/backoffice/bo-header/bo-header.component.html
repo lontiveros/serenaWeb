@@ -1,0 +1,9 @@
+<nav class="navbar navbar-light bg-white">
+    <ol class="breadcrumb bg-white">
+        <li class="breadcrumb-item active" *ngFor="let breadcrumbItem of breadcrumbs">{{ breadcrumbItem.title }}</li>
+    </ol>
+    <div class="text-right mb-3">
+        <button class="btn btn-disenart btn-sm" (click)="cerrarSesion()">Cerrar sesión</button>
+        <button color = "secondary" class = "btn btn-sm" [routerLink]="['/cambiopw']">Cambiar contraseña</button>
+    </div>
+</nav>

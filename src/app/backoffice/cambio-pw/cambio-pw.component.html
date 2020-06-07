@@ -1,0 +1,19 @@
+<mat-card>
+    <mat-card-title>Reseteo de contraseña</mat-card-title>
+    <mat-card-content>
+      <mat-tab-group mat-align-tabs="center">
+        <mat-tab>
+            <form [formGroup]="cambioFormGroup">
+              <div class="form-group">
+                <mat-label>Email</mat-label>
+                <div class="input-group mb-3">
+                  <input type="email" matInput class="form-control" placeholder="email@email.com" formControlName="cambio_usuario" required>
+                  <!--<mat-icon matSufix>alternate_email</mat-icon>-->
+                </div>
+              </div>
+              <button mat-raised-button color="primary" (click)="cambioPw()">Resetear contraseña</button>
+            </form>
+        </mat-tab>
+      </mat-tab-group>
+    </mat-card-content>
+  </mat-card>

@@ -1,0 +1,57 @@
+<app-header></app-header>
+
+<div class = "table-responsive">
+    <table>
+      <thead>
+        <tr>
+          <th>SUPERFICIE</th>
+          <th>REFERENCIA</th>
+          <th>M2</th>
+          <th>U$S</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr >
+            <td>Cubierta</td>
+            <td>Interior de la vivienda</td>
+
+            <td>
+                <input type="number" placeholder="Ingrese la cantidad de metros" [(ngModel)]='metrosInterior' (change)="calcular(metrosInterior, 'interior')">
+            </td>
+            <td>{{montoInterior}}</td>
+          
+          <!--<td>{{socio.TIPOMOVIMIENTO}}</td>-->
+        </tr>
+        <tr>
+            <td>Semicubierta</td>
+            <td>Galeria, Porche</td>
+            <td><input type="number" placeholder="Ingrese la cantidad de metros" [(ngModel)]= 'metrosSemicubierta' (change)="calcular(metrosSemicubierta, 'semicubierta')"></td>
+            <td>{{montoSemicubierta}}</td>
+        </tr>
+        <!--<tr>
+            <td>Descubierta</td>
+            <td>Balcón, patio, terraza</td>
+            <td><input type="metros" placeholder="Ingrese la cantidad de metros" [(ngModel)]='metrosDescubierta' (change)="calcular(metrosDescubierta, 'descubierta')"></td>
+            <td>{{montoDescubierta}}</td>
+        </tr>-->
+        <tr>
+            <td>Doble Altura</td>
+            <td>En interior</td>
+            <td><input type="number" placeholder="Ingrese la cantidad de metros" [(ngModel)]='metrosDAltura' (change)="calcular(metrosDAltura, 'dAltura')"></td>
+            <td>{{montoAltura}}</td>
+        </tr>
+        <tr>
+            <td>Piscina</td>
+            <td>        </td>
+            <td><input type="number" placeholder="Ingrese la cantidad de metros" [(ngModel)]='metrosPiscina' (change)="calcular(metrosPiscina, 'piscina')"></td>
+            <td>{{montoPiscina}}</td>
+        </tr>
+        <tr>
+          <td>Monto Total</td>
+          <td></td>
+          <td></td>
+          <td>{{montoTotal}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>

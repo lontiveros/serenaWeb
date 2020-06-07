@@ -1,0 +1,25 @@
+<div class="modal-header bgDisenart">
+    <h5 class="modal-title">{{ modalTitle }}</h5>
+    <button type="button" class="close" aria-hidden="true" (click)="cerrarModal()">×</button>
+</div>
+
+<div class="modal-body">
+    <form [formGroup]="montoForm">
+        <fieldset>
+            <legend>Datos</legend>
+            <div class="row">
+                <div class="col-12">
+                    <div class="form-group">
+                        <label for="monto">Monto</label>
+                        <input type="text" name="monto" id="monto" class="form-control" formControlName="monto">
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+</div>
+
+<div class="modal-footer">
+    <button class="btn btn-sm btn-secondary mr-2" (click)="cerrarModal()">Cerrar</button>
+    <button class="btn btn-sm btn-success" (click)="guardarMonto()">Guardar</button>
+</div>

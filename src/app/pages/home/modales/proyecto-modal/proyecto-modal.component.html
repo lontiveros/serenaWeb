@@ -1,0 +1,62 @@
+<div class="modal-header bgDisenart">
+    {{ proyecto.nombre }}
+    <span class="close" aria-hidden="true" (click)="cerrarModal()">&times;</span>
+</div>
+<div class="modal-body">
+    <div class="row">
+        <div class="col-xl-2 col-lg-2 col-md-6 col-sm-6">
+            <div class="" *ngFor="let imagen of proyectoImagenes; let i=index">
+                <img src="{{ imagen.src }}" alt="Imagen del proyecto" class="img-thumbnail mb-2" (click)="cambiarImagen(imagen.src, i)">
+            </div>
+        </div>
+        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
+            <img src="{{ currentImage }}" alt="Imagen del proyecto" class="img-fluid w-100" (click)="zoomImagen()">
+        </div>
+        <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
+            <div>
+                <i class="fa fa-map-marker mr-2" aria-hidden="true"></i>
+                {{ proyecto.zona }}<span *ngIf="proyecto.barrio">, {{ proyecto.barrio }}</span>
+                <span *ngIf="proyecto.area">, {{ proyecto.area }}</span>
+                <span *ngIf="proyecto.lote">, {{ proyecto.lote }}</span>
+            </div>
+            <div *ngIf="proyecto.plantas > 0">
+                <i class="fa fa-home mr-2"></i>
+                <strong>Plantas:</strong> {{ proyecto.plantas }}
+            </div>
+            <div *ngIf="tieneSuperficies">
+                <hr class="w100">
+                <strong class="superficieLabel">Superficie</strong>
+                <div *ngIf="proyecto.superficie.cubierta"><strong>Cubierta: </strong>{{ proyecto.superficie.cubierta }} m<sup>2</sup></div>
+                <div *ngIf="proyecto.superficie.semicubierta"><strong>Semicubierta: </strong>{{ proyecto.superficie.semicubierta }} m<sup>2</sup></div>
+                <div *ngIf="proyecto.superficie.pileta"><strong>Pileta: </strong>{{ proyecto.superficie.pileta }} m<sup>2</sup></div>
+                <div *ngIf="proyecto.superficie.total"><strong>Total: </strong> {{ proyecto.superficie.total }} m<sup>2</sup></div>
+            </div>
+            <div *ngIf="tieneLocales">
+                <hr class="w100">
+                <strong class="localesLabel">Locales</strong>
+                <div class="row">
+                    <div class="col-6">
+                        <div *ngIf="proyecto.locales.estar"><strong>Estar: </strong>{{ proyecto.locales.estar }}</div>
+                        <div *ngIf="proyecto.locales.comedor"><strong>Comedor: </strong>{{ proyecto.locales.comedor }}</div>
+                        <div *ngIf="proyecto.locales.cocina"><strong>Cocina: </strong>{{ proyecto.locales.cocina }}</div>
+                        <div *ngIf="proyecto.locales.dormitorio"><strong>Dormitorio: </strong>{{ proyecto.locales.dormitorio }}</div>
+                        <div *ngIf="proyecto.locales.vestidor"><strong>Vestidor: </strong>{{ proyecto.locales.vestidor }}</div>
+                    </div>
+                    <div class="col-6">
+                        <div *ngIf="proyecto.locales.estudio"><strong>Estudio: </strong>{{ proyecto.locales.estudio }}</div>
+                        <div *ngIf="proyecto.locales.bano"><strong>Baño: </strong>{{ proyecto.locales.bano }}</div>
+                        <div *ngIf="proyecto.locales.toilette"><strong>Toilette: </strong>{{ proyecto.locales.toilette }}</div>
+                        <div *ngIf="proyecto.locales.lavadero"><strong>Lavadero: </strong>{{ proyecto.locales.lavadero }}</div>
+                        <div *ngIf="proyecto.locales.baulera"><strong>Baulera: </strong>{{ proyecto.locales.baulera }}</div>
+                        <div *ngIf="proyecto.locales.galeria"><strong>Galería: </strong>{{ proyecto.locales.galeria }}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+    <div class="text-right">
+        <button class="btn btn-secondary" (click)="cerrarModal()">Cerrar</button>
+    </div>
+</div>

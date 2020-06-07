@@ -1,0 +1,31 @@
+.close {
+    cursor: pointer;
+    color: white;
+}
+
+.bgDisenart {
+    background-color: #B60E0E;
+    color: white;
+}
+
+.modal-footer .btn,
+.modal-header {
+    font-family: 'GilroyBold';
+}
+
+.modal-body {
+    font-family: 'Gilroy';
+}
+
+.localesLabel,
+.superficieLabel {
+    font-size: 18px;
+}
+
+.img-thumbnail {
+    cursor: pointer;
+}
+
+.img-fluid {
+    cursor: zoom-in;
+}

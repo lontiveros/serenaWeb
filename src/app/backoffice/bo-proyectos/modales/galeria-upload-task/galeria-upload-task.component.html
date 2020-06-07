@@ -1,0 +1,20 @@
+
+<div *ngIf="snapshot | async as snap">
+    <label>
+        {{ file.name }}
+    </label>
+    <br>
+    <div *ngIf="percentage | async as pct">
+        <progress [value]="pct" max="100"></progress>
+        {{ pct | number }}%
+    </div>
+    <button class="btn btn-warning btn-sm mr-3" (click)="uploadTask.pause()" [disabled]="!isActive(snap)">
+        <i class="fa fa-pause" aria-hidden="true" title="Pausar"></i>
+    </button>
+    <button class="btn btn-danger btn-sm mr-3" (click)="uploadTask.cancel()" [disabled]="!isActive(snap)">
+        <i class="fa fa-stop" aria-hidden="true" title="Cancelar"></i>
+    </button>
+    <button class="btn btn-success btn-sm mr-3" (click)="uploadTask.resume()" [disabled]="!(snap?.state === 'paused')">
+        <i class="fa fa-play" aria-hidden="true" title="Reanudar"></i>
+    </button>
+  </div>

@@ -1,0 +1,40 @@
+<div class="modal-header bgDisenart">
+    Nuestros materiales
+    <span class="close" aria-hidden="true" (click)="cerrarModal()">&times;</span>
+</div>
+<div class="modal-body">
+    <div class="row">
+		<div class="col-12">
+			<div class="card">
+				<div class="card-header d-flex justify-content-between">
+					<span>Listado de materiales</span>
+				</div>
+				<div class="card-body">
+					<table class="table table-bordered table-sm table-striped w-100">
+						<thead class="bgDisenart text-center">
+							<tr>
+								<th>Categoria</th>
+								<th>Nombre</th>
+								<th>Marca</th>
+								<th>Ficha tecnica</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr *ngFor="let material of materiales">
+                                <td>{{ material.id }}</td>
+                                <td>{{ material.nombre }}</td>
+                                <td>{{ material.matData.Marca}}</td>
+                                <td> <a href="{{ material.matData.Ficha }}" target="_blank">Ver ficha tecnica</a></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="modal-footer">
+    <div class="text-right">
+        <button class="btn btn-secondary" (click)="cerrarModal()">Cerrar</button>
+    </div>
+</div>

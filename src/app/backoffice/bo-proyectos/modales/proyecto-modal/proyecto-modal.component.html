@@ -1,0 +1,199 @@
+<div class="modal-header bgDisenart">
+    <h5 class="modal-title">{{ modalTitle }}</h5>
+    <button type="button" class="close" aria-hidden="true" (click)="cerrarModal()">×</button>
+</div>
+
+<div class="modal-body">
+    <form [formGroup]="proyectoForm">
+        <fieldset>
+            <legend>Datos del proyecto</legend>
+            <div class="row">
+                <div class="col-12">
+                    <div class="form-group">
+                        <label for="nombre">Nombre <span class="requiredLabel">* Campo obligatorio</span></label>
+                        <input type="text" name="nombre" id="nombre" class="form-control" formControlName="nombre"  [ngClass]="{ 'is-invalid': isFormSubmitted && proyectoForm.get('nombre').errors }">
+                        <div *ngIf="isFormSubmitted && proyectoForm.get('nombre').errors" class="invalid-feedback">
+                            <span *ngIf="proyectoForm.get('nombre').errors.required">Este campo es obligatorio.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-3">
+                    <div class="form-group">
+                        <div class="d-flex justify-content-between">
+                            <label for="zona">Zona <span class="requiredLabel">* Campo obligatorio</span></label>
+                            <i class="fa fa-plus-circle my-auto" title="Agregar zona" (click)="agregarZona()" *ngIf="!isEdit"></i>
+                        </div>
+                        <select name="zona" id="zona" class="form-control" formControlName="zona" [ngClass]="{ 'is-invalid': isFormSubmitted && proyectoForm.get('zona').errors }">
+                            <option value="">Seleccione...</option>
+                            <option *ngFor="let zona of zonas" value="{{ zona.id }}">{{ zona.data.descripcion }}</option>
+                        </select>
+                        <div *ngIf="isFormSubmitted && proyectoForm.get('zona').errors" class="invalid-feedback">
+                            <span *ngIf="proyectoForm.get('zona').errors.required">Este campo es obligatorio.</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-group">
+                        <div class="d-flex justify-content-between">
+                            <label for="barrio">Barrio</label>
+                            <i class="fa fa-plus-circle my-auto" title="Agregar barrio" (click)="agregarBarrio()"></i>
+                        </div>
+                        <select name="barrio" id="barrio" class="form-control" formControlName="barrio">
+                            <option value="">Seleccione...</option>
+                            <option *ngFor="let barrio of barrios" value="{{ barrio.id }}">{{ barrio.data.descripcion }}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-group">
+                        <div class="d-flex justify-content-between">
+                            <label for="area">Área</label>
+                            <i class="fa fa-plus-circle my-auto" title="Agregar árrea" (click)="agregarArea()"></i>
+                        </div>
+                        <select name="area" id="area" class="form-control" formControlName="area">
+                            <option value="">Seleccione...</option>
+                            <option *ngFor="let area of areas" value="{{ area.id }}">{{ area.data.descripcion }}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-group">
+                        <label for="lote">Lote</label>
+                        <input type="text" name="lote" id="lote" class="form-control" formControlName="lote">
+                    </div>
+                </div>
+            </div>
+            <legend>Superficie</legend>
+            <div class="row">
+                <div class="col-3">
+                    <div class="form-group">
+                        <label for="cubierta">Cubierta</label>
+                        <div class="input-group mb-3">
+							<input type="number" class="form-control" id="cubierta" placeholder="Superficie" aria-label="Superficie en metros cuadrados" aria-describedby="cubierta-append" formControlName="cubierta" (change)="calcularTotal()">
+							<div class="input-group-append">
+								  <span class="input-group-text" id="cubierta-append">m<sup>2</sup></span>
+							</div>
+						</div>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-group">
+                        <label for="semicubierta">Semicubierta</label>
+                        <div class="input-group mb-3">
+							<input type="number" class="form-control" id="semicubierta" placeholder="Superficie" aria-label="Superficie en metros cuadrados" aria-describedby="pileta-append" formControlName="semicubierta" (change)="calcularTotal()">
+							<div class="input-group-append">
+								  <span class="input-group-text" id="semicubierta-append">m<sup>2</sup></span>
+							</div>
+						</div>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-group">
+                        <label for="pileta">Pileta</label>
+                        <div class="input-group mb-3">
+							<input type="number" class="form-control" id="pileta" placeholder="Superficie" aria-label="Superficie en metros cuadrados" aria-describedby="pileta-append" formControlName="pileta">
+							<div class="input-group-append">
+								  <span class="input-group-text" id="pileta-append">m<sup>2</sup></span>
+							</div>
+						</div>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-group">
+                        <label for="total">Total</label>
+                        <div class="input-group mb-3">
+							<input type="text" class="form-control" id="total" placeholder="Superficie" aria-label="Superficie en metros cuadrados" aria-describedby="total-append" formControlName="total" readonly>
+							<div class="input-group-append">
+								  <span class="input-group-text" id="total-append">m<sup>2</sup></span>
+							</div>
+						</div>
+                    </div>
+                </div>
+            </div>
+            <legend>Plantas y locales</legend>
+            <div class="row">
+                <div class="col-2">
+                    <div class="form-group">
+                        <label for="plantas">PB + N</label>
+                        <input type="number" name="plantas" id="plantas" class="form-control" formControlName="plantas">
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="form-group">
+                        <label for="estar">Estar</label>
+                        <input type="number" name="estar" id="estar" class="form-control" formControlName="estar">
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="form-group">
+                        <label for="comedor">Comedor</label>
+                        <input type="number" name="comedor" id="comedor" class="form-control" formControlName="comedor">
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="form-group">
+                        <label for="cocina">Cocina</label>
+                        <input type="number" name="cocina" id="cocina" class="form-control" formControlName="cocina">
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="form-group">
+                        <label for="dormitorio">Dormitorio</label>
+                        <input type="number" name="dormitorio" id="dormitorio" class="form-control" formControlName="dormitorio">
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="form-group">
+                        <label for="vestidor">Vestidor</label>
+                        <input type="number" name="vestidor" id="vestidor" class="form-control" formControlName="vestidor">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-2">
+                    <div class="form-group">
+                        <label for="estudio">Estudio</label>
+                        <input type="number" name="estudio" id="estudio" class="form-control" formControlName="estudio">
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="form-group">
+                        <label for="bano">Baño</label>
+                        <input type="number" name="bano" id="bano" class="form-control" formControlName="bano">
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="form-group">
+                        <label for="toilette">Toilette</label>
+                        <input type="number" name="toilette" id="toilette" class="form-control" formControlName="toilette">
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="form-group">
+                        <label for="lavadero">Lavadero</label>
+                        <input type="number" name="lavadero" id="lavadero" class="form-control" formControlName="lavadero">
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="form-group">
+                        <label for="baulera">Baulera</label>
+                        <input type="number" name="baulera" id="baulera" class="form-control" formControlName="baulera">
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="form-group">
+                        <label for="galeria">Galería</label>
+                        <input type="number" name="galeria" id="galeria" class="form-control" formControlName="galeria">
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+</div>
+
+<div class="modal-footer">
+    <button class="btn btn-sm btn-secondary mr-2" (click)="cerrarModal()">Cerrar</button>
+    <button class="btn btn-sm btn-success" (click)="guardarProyecto()">Guardar</button>
+</div>

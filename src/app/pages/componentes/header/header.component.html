@@ -1,0 +1,22 @@
+<div class="menu-wrap">
+	<input type="checkbox" class="toggler" [(ngModel)]="isMenuOpen">
+	<div class="hamburger">
+		<div></div>
+	</div>
+	<div class="menu">
+		<div (click)="closeMenu()">
+			<div>
+				<ul>
+					<li><a href="#">Inicio</a></li>
+					<li><a href="#nosotros">Nosotros</a></li>
+					<li><a href="#servicios">Servicios</a></li>
+					<li><a href="#galeria">Nuestros proyectos</a></li>
+					<li><a href="#calculaTuProyecto">Calculá tu proyecto</a></li>
+					<li><a href="#contacto">Contacto</a></li>
+					<li><a href="/login" *ngIf="!isLogged">Iniciar sesión</a></li>
+					<li><a href="/admin" *ngIf="isLogged">Ir al panel de administración</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>

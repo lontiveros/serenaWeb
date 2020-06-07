@@ -1,0 +1,43 @@
+<app-bo-header [breadcrumbs]="breadcrumbs"></app-bo-header>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-12">
+			<div class="card">
+				<div class="card-header d-flex justify-content-between">
+					<span>Listado de proyectos</span>
+					<button class="btn btn-sm bgDisenart btnDisenart" (click)="abrirProyectoModal()">
+						Agregar
+					</button>
+				</div>
+				<div class="card-body">
+					<table class="table table-bordered table-sm table-striped w-100">
+						<thead class="bgDisenart text-center">
+							<tr>
+								<th>Proyecto</th>
+								<th>Zona</th>
+								<th>Barrio</th>
+								<th>Área</th>
+								<th>Lote</th>
+								<th></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr *ngFor="let proyecto of proyectos">
+								<td>{{ proyecto.obraData.nombre }}</td>
+								<td>{{ proyecto.obraData.zona }}</td>
+								<td>{{ proyecto.obraData.barrio}}</td>
+								<td>{{ proyecto.obraData.area }}</td>
+								<td>{{ proyecto.obraData.lote }}</td>
+								<td class="text-center">
+									<i class="fa fa-picture-o mr-3" title="Ver imágenes del proyecto" (click)="abrirGaleria(proyecto)"></i>
+									<i class="fa fa-pencil mr-3" title="Editar" (click)="abrirProyectoModal(proyecto)"></i>
+									<i class="fa fa-trash" title="Eliminar" (click)="eliminarProyecto(proyecto)"></i>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>	
+</div>

@@ -1,0 +1,17 @@
+.btn-disenart {
+    background-color: #B60E0E;
+    font-weight: bold;
+    color: white;
+    font-family: 'GilroyBold', Tahoma, Geneva, Verdana, sans-serif;
+    border-color: #B60E0E;
+}
+
+.btn-disenart:active,
+.btn-disenart:focus,
+.btn-disenart:not(:disabled):not(.disabled):active:focus { 
+    box-shadow: 0 0 0 0.2rem #B60E0E;
+}
+
+.navbar {
+    font-family: 'Gilroy', Tahoma, Geneva, Verdana, sans-serif;
+}

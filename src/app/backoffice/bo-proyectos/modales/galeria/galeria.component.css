@@ -1,0 +1,49 @@
+*:focus {
+    border: none;
+    outline: none;
+}
+
+.bgDisenart {
+    background-color: #B60E0E;
+    color: white;
+}
+
+.modal-body {
+    font-family: 'Gilroy', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.close {
+    color: white;
+}
+
+.modal-title {
+    font-family: 'GilroyBold', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.dropzone { 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column; 
+    min-width: 100%;
+    font-weight: 200;
+    height: 200px;
+    border: 2px dashed #B60E0E;
+    border-radius: 5px;
+    background: white;
+    margin: 10px 0;    
+}
+
+.dropzone.hovering {
+    border: 2px solid #B60E0E;
+    color: #dadada !important;
+}
+
+.file-label {
+    font-size: 1.2em;
+}
+
+progress::-webkit-progress-value {
+    transition: width 0.1s ease;
+}
+

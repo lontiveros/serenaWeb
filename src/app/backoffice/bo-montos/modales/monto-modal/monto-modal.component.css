@@ -1,0 +1,30 @@
+*:focus {
+    border: none;
+    outline: none;
+}
+
+.modal-body {
+    font-family: 'Gilroy', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.close {
+    color: white;
+}
+
+.modal-title {
+    font-family: 'GilroyBold', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.bgDisenart {
+    background-color: #B60E0E;
+    color: white;
+}
+
+legend {
+    font-size: 1.5rem;
+}
+
+.modal-body i.fa {
+    cursor: pointer;
+    color: #B60E0E;
+}
