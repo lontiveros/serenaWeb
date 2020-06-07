@@ -220,7 +220,7 @@ export class HomeComponent implements OnInit {
 						
 				switch (clave.id) {
 					case 'Nosotros':
-						this.nosotros = clave.contenidosData.text;						
+						document.getElementById("nosotrosContent").innerHTML = clave.contenidosData.text;	
 						break;
 				}
 			}				

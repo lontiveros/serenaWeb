@@ -18,6 +18,7 @@ export class ContenidoModalComponent implements OnInit {
   public contenidoForm: FormGroup;
   public isFormSubmitted: boolean = false;
   public secciones: Array<any> = [];
+  public editorConfig: any = {};
   
   
   constructor(
@@ -25,15 +26,30 @@ export class ContenidoModalComponent implements OnInit {
 		private contenidoService: ContenidoService
   ) { }
 
-  ngOnInit(): void {
-    this.modalTitle = (this.contenido) ? "Editar proyecto: " + this.contenido.id : "Nuevo contenido";
-    this.initContenidoForm();
-    this.obtenerSecciones();
+  	ngOnInit(): void {
+		this.modalTitle = (this.contenido) ? "Editar contenido: " + this.contenido.id : "Nuevo contenido";
+		this.initContenidoForm();
+		this.editorConfig = {
+			base_url: '/tinymce',
+			language: 'es_MX',
+			language_url : '/assets/lang/editor_es.js',
+			suffix: '.min',
+			height: 200,
+			menubar: false,
+			plugins: [
+				'advlist autolink lists link image charmap print preview anchor',
+				'searchreplace visualblocks code fullscreen',
+				'insertdatetime media table paste code help wordcount'
+			],
+			toolbar:
+				'undo redo | formatselect | bold italic | \
+				alignleft aligncenter alignright alignjustify'
+		}
 
-    if (this.contenido){
-      this.setContenidoData(this.contenido)
-    }
-  }
+		if (this.contenido){
+			this.setContenidoData(this.contenido)
+		}
+	}
 
   initContenidoForm() {
 		this.contenidoForm = this.formBuilder.group({
@@ -42,46 +58,6 @@ export class ContenidoModalComponent implements OnInit {
 			'texto': ['']
     });
   }
-
-  obtenerSecciones() {
-		this.secciones = new Array<any>();
-		this.contenidoService.obtenerSecciones().subscribe(_response => {      
-			this.secciones = [];
-			_response.forEach(_seccion => {
-				this.secciones.push({
-					id: _seccion.payload.doc.id,
-					data: _seccion.payload.doc.data()
-				})
-      });
-      
-      
-		}, _error => {
-			Swal.fire("Se ha presentado un error inesperado", "No se pudo obtener la información de las secciones debido a un error inesperado del sistema. \n Por favor contacte con el administrador del sistema.");
-		});
-  }
-
-  agregarSeccion() {
-		let seccion = Swal.fire({
-			title: 'Agregar seccion',
-			input: "text",
-			showCancelButton: true,
-			cancelButtonText: "Cancelar",
-			confirmButtonText: "Guardar",
-			inputValidator: (value) => {
-				if (!value) {
-					return 'El campo no puede estar vacío.';
-				}
-			}
-		});
-
-		seccion.then(_result => {
-			if (_result.value) {
-				this.contenidoService.guardarSeccion(_result.value);
-			}
-		});
-
-		this.obtenerSecciones();
-	}
   
   setContenidoData(contenido: any) {    
 	this.contenidoForm.get('seccion').setValue(contenido.contenidosData.seccion);
@@ -95,15 +71,12 @@ export class ContenidoModalComponent implements OnInit {
   
   guardarContenido() {
 		this.isFormSubmitted = true;
-
 		if (this.contenidoForm.valid) {
 			let contenido = new Contenido;
-			contenido.seccion = this.contenidoForm.get('seccion').value;
+			contenido.seccion = this.contenido.id;
 			contenido.titulo = this.contenidoForm.get('titulo').value;
 			contenido.text = this.contenidoForm.get('texto').value;
-			//console.log(contenido);
-			
-			
+			console.log(contenido)
 
 			if (this.contenido) {
 				this.contenidoService.actualizarContenido(contenido.seccion, contenido).then(_response => {
@@ -111,8 +84,6 @@ export class ContenidoModalComponent implements OnInit {
 					this.modalReference.close();
 				}).catch(_error => {
 					Swal.fire('Se ha presentado un error inesperado.', 'El contenido de ' + contenido.seccion + ' no pudo ser actualizado debido a un error inesperado del sistema, por favor contacte con el administrador del sistema.', 'error');
-					
-					
 				})
 			} else {
 				this.contenidoService.guardarContenido(contenido).then(_response => {
@@ -122,8 +93,6 @@ export class ContenidoModalComponent implements OnInit {
 					Swal.fire('Se ha presentado un error inesperado.', 'El contenido de ' + contenido.seccion + ' no pudo ser creado debido a un error inesperado del sistema, por favor contacte con el administrador del sistema.', 'error');
 				})
 			}
-
-    }
+		}
   }
-
 }

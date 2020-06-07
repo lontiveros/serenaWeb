@@ -10,27 +10,20 @@
 					</button>
 				</div>
 				<div class="card-body">
-					<table class="table table-bordered table-sm table-striped w-100">
-						<thead class="bgDisenart text-center">
-							<tr>
-								<th>Seccion</th>
-								<th>Titulo</th>
-                                <th>Texto</th>
-                                <th></th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr *ngFor="let contenido of contenidos">
-								<td>{{ contenido.id }}</td>
-								<td>{{ contenido.contenidosData.titulo }}</td>
-								<td>{{ contenido.contenidosData.text }}</td>
-								<td class="text-center">
-									<i class="fa fa-pencil mr-3" title="Editar" (click)="abrirModalTextos(contenido)"></i>
-									<i class="fa fa-trash" title="Eliminar" (click)="eliminarContenido(contenido)"></i>
-								</td>
-							</tr>
-						</tbody>
-					</table>
+					<div class="row">
+						<div class="col-4" *ngFor="let contenido of contenidos">
+							<div class="card">
+								<div class="card-header">
+									{{ contenido.contenidosData.titulo }}
+								</div>
+								<div class="card-body text-right">
+									<button class="btn btnSerena mr-3" (click)="abrirModalTextos(contenido)">
+										<i class="fa fa-pencil" title="Editar"></i>
+									</button>
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>

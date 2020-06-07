@@ -6,7 +6,6 @@
 <div class="modal-body">
     <form [formGroup]="contenidoForm">
         <fieldset>
-
             <legend>Contenido</legend>
             <div class="row">
                 <div class="col-12">
@@ -17,13 +16,41 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-3">
+                <div class="col-12">
                     <div class="form-group">
-                        <div class="d-flex justify-content-between">
-                            <label for="texto">Texto</label>
+                        <div [ngSwitch]="contenido.id">
+                            <div *ngSwitchCase="'Nosotros'">
+                                <label for="texto">Texto</label>
+                                <editor
+                                    formControlName="texto"
+                                    [init]="editorConfig"
+                                ></editor>
+                            </div>
+                            <div *ngSwitchCase="'Contacto'">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                            <label for="direccion">Dirección</label>
+                                            <input type="text" class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="form-group">
+                                            <label for="direccion">Teléfono</label>
+                                            <input type="text" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="form-group">
+                                            <label for="direccion">Email</label>
+                                            <input type="text" class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <textarea name="texto" id="texto" class="form-control" formControlName="texto">
-                        </textarea>
                     </div>
                 </div>
             </div>

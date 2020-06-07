@@ -1,3 +1,4 @@
+.btnSerena,
 .bgDisenart {
     background-color: #3296C8;
     color: white;
@@ -13,6 +14,6 @@ table td {
     font-family: 'Gilroy', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-td i.fa {
+.btn i.fa {
     cursor: pointer;
 }
