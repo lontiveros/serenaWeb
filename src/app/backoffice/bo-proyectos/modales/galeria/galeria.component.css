@@ -4,7 +4,7 @@
 }
 
 .bgDisenart {
-    background-color: #B60E0E;
+    background-color: #3296C8;
     color: white;
 }
 
@@ -28,14 +28,14 @@
     min-width: 100%;
     font-weight: 200;
     height: 200px;
-    border: 2px dashed #B60E0E;
+    border: 2px dashed #3296C8;
     border-radius: 5px;
     background: white;
     margin: 10px 0;    
 }
 
 .dropzone.hovering {
-    border: 2px solid #B60E0E;
+    border: 2px solid #3296C8;
     color: #dadada !important;
 }
 

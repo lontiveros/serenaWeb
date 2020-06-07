@@ -1,15 +1,15 @@
 .btn-disenart {
-    background-color: #B60E0E;
+    background-color: #3296C8;
     font-weight: bold;
     color: white;
     font-family: 'GilroyBold', Tahoma, Geneva, Verdana, sans-serif;
-    border-color: #B60E0E;
+    border-color: #3296C8;
 }
 
 .btn-disenart:active,
 .btn-disenart:focus,
 .btn-disenart:not(:disabled):not(.disabled):active:focus { 
-    box-shadow: 0 0 0 0.2rem #B60E0E;
+    box-shadow: 0 0 0 0.2rem #3296C8;
 }
 
 .navbar {

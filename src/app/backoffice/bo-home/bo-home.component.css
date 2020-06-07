@@ -17,13 +17,13 @@ a {
 }
 
 .router-link-active {
-    background-color: #B60E0E;
+    background-color: #3296C8;
     color: white;
     font-weight: bold;
 }
 
 .list-group-item {
-    border-bottom: 1px solid #B60E0E;
+    border-bottom: 1px solid #3296C8;
 }
 
 .list-group-item:first-child, 
@@ -32,10 +32,10 @@ a {
     border-top-right-radius: 0rem;
     border-bottom-right-radius: 0rem;
     border-bottom-left-radius: 0rem;
-    border-bottom: 1px solid #B60E0E;
+    border-bottom: 1px solid #3296C8;
 }
 
 .list-group-item:first-child {
-    border-top: 1px solid #B60E0E;
+    border-top: 1px solid #3296C8;
 }
 

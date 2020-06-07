@@ -30,7 +30,7 @@
 	width: 60px;
 	height: 60px;
 	padding: 1rem;
-	background: var(--disenart-red-color);
+	background: rgb(34, 121, 165);
 	display: flex;
 	align-items: center;
 	justify-content: center;
