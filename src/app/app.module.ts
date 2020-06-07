@@ -46,6 +46,7 @@ import { BoMontosComponent } from './backoffice/bo-montos/bo-montos.component';
 import { MontoModalComponent } from './backoffice/bo-montos/modales/monto-modal/monto-modal.component';
 import { ProyectoInfoModalComponent } from "./pages/home/modales/proyecto-modal/proyecto-modal.component";
 import { MarcasModalComponent } from './pages/home/modales/marcas-modal/marcas-modal.component';
+import { EditorModule, TINYMCE_SCRIPT_SRC } from "@tinymce/tinymce-angular";
 
 registerLocaleData(localeEs, 'es-Ar');
 
@@ -99,13 +100,15 @@ registerLocaleData(localeEs, 'es-Ar');
 		NgxDatatableModule, 
 		MaterialModule,
 		BrowserAnimationsModule,
-		MatTabsModule
+		MatTabsModule,
+		EditorModule
 	],
 	providers: [
 		ContenidoService,
 		ProyectosService,
 		MarcasService,
-		MontosService
+		MontosService,
+		{ provide: TINYMCE_SCRIPT_SRC, useValue: 'tinymce/tinymce.min.js' }
 	],
 	bootstrap: [AppComponent],
 	entryComponents: [
