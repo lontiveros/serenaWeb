@@ -31,21 +31,27 @@
                                     <div class="col-12">
                                         <div class="form-group">
                                             <label for="direccion">Dirección</label>
-                                            <input type="text" class="form-control">
+                                            <input type="text" class="form-control" formControlName="direccion">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-6">
+                                    <div class="col-3">
                                         <div class="form-group">
-                                            <label for="direccion">Teléfono</label>
-                                            <input type="text" class="form-control">
+                                            <label for="numero">Teléfono (Prefijo)</label><br>
+                                            <input type="number" class="form-control" name="prefijo" placeholder="Prefijo" formControlName="telPrefijo">
+                                        </div>
+                                    </div>
+                                    <div class="col-3">
+                                        <div class="form-group">
+                                            <label for="numero">Teléfono (Número)</label><br>
+                                            <input type="number" class="form-control" name="numero" placeholder="Número" formControlName="telNumero">
                                         </div>
                                     </div>
                                     <div class="col-6">
                                         <div class="form-group">
                                             <label for="direccion">Email</label>
-                                            <input type="text" class="form-control">
+                                            <input type="text" class="form-control" formControlName="email">
                                         </div>
                                     </div>
                                 </div>

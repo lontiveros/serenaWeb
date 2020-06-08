@@ -1,7 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
-import { FormGroup, FormBuilder,Validators } from '@angular/forms';
-import { Contenido } from 'src/app/domain/contenido';
+import { FormGroup, FormBuilder } from '@angular/forms';
 import { ContenidoService } from 'src/app/services/firebase/contenido.service';
 import Swal from 'sweetalert2'
 
@@ -55,14 +54,28 @@ export class ContenidoModalComponent implements OnInit {
 		this.contenidoForm = this.formBuilder.group({
 			'seccion':[''],
       		'titulo': [''],
-			'texto': ['']
+			'texto': [''],
+			'direccion': [''],
+			'telPrefijo': [''],
+			'telNumero': [''],
+			'email': ['']
     });
   }
   
-  setContenidoData(contenido: any) {    
-	this.contenidoForm.get('seccion').setValue(contenido.contenidosData.seccion);
-	this.contenidoForm.get('titulo').setValue(contenido.contenidosData.titulo);
-    this.contenidoForm.get('texto').setValue(contenido.contenidosData.text);
+  setContenidoData(contenido: any) {
+	  this.contenidoForm.get('titulo').setValue(contenido.contenidosData.titulo);
+	
+	  if (contenido.id == "Nosotros") {
+		this.contenidoForm.get('seccion').setValue(contenido.contenidosData.seccion);
+		this.contenidoForm.get('texto').setValue(contenido.contenidosData.text);
+	}
+
+	if (contenido.id == "Contacto") {
+		this.contenidoForm.get('direccion').setValue(contenido.contenidosData.direccion);
+		this.contenidoForm.get('telPrefijo').setValue(contenido.contenidosData.telPrefijo);
+		this.contenidoForm.get('telNumero').setValue(contenido.contenidosData.telNumero);
+		this.contenidoForm.get('email').setValue(contenido.contenidosData.email);
+	}
   }
 
   cerrarModal() {
@@ -72,11 +85,18 @@ export class ContenidoModalComponent implements OnInit {
   guardarContenido() {
 		this.isFormSubmitted = true;
 		if (this.contenidoForm.valid) {
-			let contenido = new Contenido;
+			let contenido:any = {};
 			contenido.seccion = this.contenido.id;
 			contenido.titulo = this.contenidoForm.get('titulo').value;
-			contenido.text = this.contenidoForm.get('texto').value;
-			console.log(contenido)
+
+			if (this.contenido.id == "Nosotros") {
+				contenido.text = this.contenidoForm.get('texto').value;
+			}  else {
+				contenido.direccion = this.contenidoForm.get('direccion').value;
+				contenido.telPrefijo = this.contenidoForm.get('telPrefijo').value;
+				contenido.telNumero = this.contenidoForm.get('telNumero').value;
+				contenido.email = this.contenidoForm.get('email').value;
+			}
 
 			if (this.contenido) {
 				this.contenidoService.actualizarContenido(contenido.seccion, contenido).then(_response => {

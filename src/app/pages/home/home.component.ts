@@ -220,7 +220,20 @@ export class HomeComponent implements OnInit {
 						
 				switch (clave.id) {
 					case 'Nosotros':
+						document.getElementById("nosotrosTitulo").innerHTML = clave.contenidosData.titulo;	
 						document.getElementById("nosotrosContent").innerHTML = clave.contenidosData.text;	
+						break;
+					case 'Contacto':
+						document.getElementById('contactoTitulo').innerHTML = clave.contenidosData.titulo;
+
+						document.getElementById('direccion').innerHTML = clave.contenidosData.direccion;
+						document.getElementById('direccion').setAttribute('href', 'https://maps.google.com/?q=' + clave.contenidosData.direccion);
+
+						document.getElementById('numero').innerHTML = `(${clave.contenidosData.telPrefijo}) - ${clave.contenidosData.telNumero}`;
+						document.getElementById('numero').setAttribute('href', `tel:${clave.contenidosData.telPrefijo}${clave.contenidosData.telNumero}`);
+						
+						document.getElementById('correo').innerHTML = clave.contenidosData.email;
+						document.getElementById('correo').setAttribute('href', 'mailto:' + clave.contenidosData.email);
 						break;
 				}
 			}				
